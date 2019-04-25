@@ -1,0 +1,16 @@
+{
+  "name": "p5-animated-draw",
+  "version": "1.0.0",
+  "description": "Animated drawing with p5.js",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "tnantoka/p5-animated-draw",
+  "author": "tnantoka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tnantoka/p5-animated-draw/issues"
+  },
+  "homepage": "https://github.com/tnantoka/p5-animated-draw#readme"
+}
