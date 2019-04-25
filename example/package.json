@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "p5": "^0.8.0",
+    "p5-animated-draw": "../",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1"
+  }
+}
