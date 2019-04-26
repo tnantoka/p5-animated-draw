@@ -1,14 +1,16 @@
-const defaultSteps = 60;
+const defaultStep = 10.0;
 
 class Shape {
-  constructor(p5, steps) {
+  constructor(p5, strokeColor, steps) {
     this.inProgress = true;
-    this.currentStep = 0;
+    this.currentStep = 1;
     this.p5 = p5;
+    this.strokeColor = strokeColor;
     this.steps = steps;
   }
 
   draw() {
+    this.p5.stroke(this.strokeColor);
     if (this.inProgress) {
       this.drawWithStep();
       this.currentStep++;
@@ -26,8 +28,9 @@ class Shape {
 }
 
 export class Circle extends Shape {
-  constructor(p5, point, diameter, steps) {
-    super(p5, steps);
+  constructor(p5, point, diameter, strokeColor, step) {
+    const steps = Math.floor(diameter * p5.PI / step);
+    super(p5, strokeColor, steps);
     this.point = point;
     this.diameter = diameter;
   }
@@ -43,8 +46,9 @@ export class Circle extends Shape {
 }
 
 export class Line extends Shape {
-  constructor(p5, point1, point2, steps) {
-    super(p5, steps);
+  constructor(p5, point1, point2, strokeColor, step) {
+    const steps = Math.floor(p5.dist(point1.x, point1.y, point2.x, point2.y) / step);
+    super(p5, strokeColor, steps);
     this.point1 = point1;
     this.point2 = point2;
   }
@@ -66,15 +70,15 @@ export default class Animated {
     this.shapes = [];
   }
 
-  addLine(point1, point2, steps = defaultSteps) {
+  addLine(point1, point2, strokeColor, step = defaultStep) {
     this.shapes.push(
-      new Line(this.p5, point1, point2, steps)
+      new Line(this.p5, point1, point2, strokeColor, step)
     );
   }
 
-  addCircle(point, diameter, steps = defaultSteps) {
+  addCircle(point, diameter, strokeColor, step = defaultStep) {
     this.shapes.push(
-      new Circle(this.p5, point, diameter, steps)
+      new Circle(this.p5, point, diameter, strokeColor, step)
     );
   }
 
